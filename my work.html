@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Work | Kanya</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #100b19;
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* SMOKE BACKGROUND */
+      .smoke-background {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        overflow: hidden;
+        pointer-events: none;
+        background: #100b19;
+      }
+
+      .smoke-background video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
+      }
+
+      .smoke-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(10, 5, 20, 0.15);
+        z-index: 1;
+      }
+
+      /* KEEP THE PAGE ABOVE THE VIDEO */
+      .page-content {
+        position: relative;
+        z-index: 2;
+        min-height: 100vh;
+        padding: 25px 7% 50px;
+        background: transparent;
+      }
+
+      /* NAVIGATION */
+      .navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 10px auto 65px;
+      }
+
+      .navigation a {
+        text-decoration: none;
+        color: white;
+        font-size: 11px;
+        letter-spacing: 1px;
+        padding: 13px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+        background: rgba(20, 14, 35, 0.35);
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        transform: translateY(-40px);
+        animation: dropIn 0.7s ease forwards;
+        transition: 0.3s;
+      }
+
+      .navigation a:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .navigation a:nth-child(2) {
+        animation-delay: 0.25s;
+      }
+      .navigation a:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+      .navigation a:nth-child(4) {
+        animation-delay: 0.55s;
+      }
+      .navigation a:nth-child(5) {
+        animation-delay: 0.7s;
+      }
+
+      .navigation a:hover,
+      .navigation a.active {
+        color: #f3c0ff;
+        border-color: #e69aff;
+        box-shadow: 0 0 18px rgba(207, 102, 255, 0.4);
+        background: rgba(155, 68, 210, 0.2);
+      }
+
+      @keyframes dropIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* PAGE HEADING */
+      .hero {
+        text-align: center;
+        max-width: 760px;
+        margin: 35px auto 45px;
+        animation: fadeUp 1s ease both;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 9px 18px;
+        border: 1px solid rgba(236, 166, 255, 0.6);
+        border-radius: 30px;
+        color: #f0b7ff;
+        font-size: 11px;
+        letter-spacing: 3px;
+        background: rgba(20, 10, 35, 0.15);
+        margin-bottom: 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(43px, 7vw, 78px);
+        letter-spacing: -2px;
+        margin-bottom: 20px;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(90deg, #d9a4ff, #ff78ca, #a9c3ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        max-width: 600px;
+        margin: auto;
+        color: #f0e8f7;
+        font-size: 15px;
+        line-height: 1.9;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* CATEGORY BUTTONS */
+      .filters {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 35px 0 55px;
+      }
+
+      .filter-btn {
+        color: white;
+        padding: 12px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+        background: rgba(20, 10, 35, 0.2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        cursor: pointer;
+        font-size: 13px;
+        transition: 0.3s;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: linear-gradient(110deg, #9147ed, #e34fae);
+        border-color: transparent;
+        box-shadow: 0 0 20px rgba(199, 83, 255, 0.45);
+      }
+
+      /* CATEGORY SECTIONS */
+      .category-section {
+        margin-bottom: 75px;
+        scroll-margin-top: 30px;
+      }
+
+      .category-heading {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+      }
+
+      .category-heading h2 {
+        font-size: clamp(23px, 4vw, 32px);
+      }
+
+      .category-heading h2 span {
+        color: #e6a0ff;
+      }
+
+      .category-count {
+        color: #f3d5ff;
+        border: 1px solid rgba(230, 160, 255, 0.4);
+        border-radius: 20px;
+        padding: 6px 10px;
+        font-size: 11px;
+        background: rgba(30, 10, 45, 0.2);
+      }
+
+      .section-line {
+        height: 1px;
+        flex: 1;
+        background: linear-gradient(
+          90deg,
+          rgba(227, 137, 255, 0.65),
+          transparent
+        );
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+      }
+
+      .project-card {
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 20px;
+        background: rgba(15, 8, 28, 0.22);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        transition:
+          transform 0.35s,
+          border-color 0.35s,
+          box-shadow 0.35s;
+        animation: fadeUp 0.7s ease both;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(229, 146, 255, 0.85);
+        box-shadow: 0 15px 40px rgba(185, 75, 255, 0.22);
+      }
+
+      .project-card.hidden {
+        display: none;
+      }
+
+      /* STYLISED PROJECT PREVIEW */
+      .project-preview {
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 20% 30%,
+            rgba(219, 91, 255, 0.3),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 80% 75%,
+            rgba(99, 112, 255, 0.3),
+            transparent 45%
+          ),
+          rgba(12, 7, 25, 0.18);
+      }
+
+      .preview-window {
+        width: 78%;
+        height: 120px;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: rgba(14, 8, 26, 0.48);
+        box-shadow: 0 0 30px rgba(213, 90, 255, 0.22);
+        transform: rotate(-3deg);
+        transition: 0.4s;
+      }
+
+      .project-card:hover .preview-window {
+        transform: rotate(0) scale(1.04);
+      }
+
+      .preview-dots {
+        display: flex;
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+
+      .preview-dots span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ed83ff;
+      }
+
+      .preview-line {
+        height: 6px;
+        width: 65%;
+        margin: 8px 0;
+        border-radius: 5px;
+        background: rgba(235, 172, 255, 0.8);
+      }
+
+      .preview-line.short {
+        width: 35%;
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .preview-boxes {
+        display: flex;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .preview-boxes span {
+        flex: 1;
+        height: 27px;
+        border-radius: 5px;
+        background: linear-gradient(135deg, #a855f7, #ed64a6);
+        opacity: 0.9;
+      }
+
+      .preview-symbol {
+        position: absolute;
+        right: 15px;
+        bottom: 12px;
+        font-size: 24px;
+        color: #f0c0ff;
+        text-shadow: 0 0 15px #ed64ff;
+      }
+
+      /* CERTIFICATE PREVIEW */
+      .certificate-preview {
+        background:
+          radial-gradient(circle, rgba(227, 153, 255, 0.27), transparent 60%),
+          rgba(12, 7, 25, 0.2);
+      }
+
+      .certificate-paper {
+        width: 150px;
+        height: 120px;
+        padding: 14px;
+        text-align: center;
+        border: 2px solid #e2aaff;
+        outline: 1px solid rgba(255, 255, 255, 0.4);
+        outline-offset: -7px;
+        background: rgba(30, 15, 45, 0.35);
+        transform: rotate(-3deg);
+        transition: 0.4s;
+      }
+
+      .project-card:hover .certificate-paper {
+        transform: rotate(0) scale(1.04);
+      }
+
+      .certificate-paper .star {
+        color: #f4d1ff;
+        font-size: 22px;
+      }
+
+      .certificate-paper p {
+        margin-top: 7px;
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .cert-line {
+        width: 65%;
+        height: 3px;
+        margin: 7px auto;
+        background: rgba(255, 255, 255, 0.65);
+      }
+
+      /* PROJECT DETAILS */
+      .project-info {
+        padding: 22px;
+      }
+
+      .project-type {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #edb0ff;
+        margin-bottom: 12px;
+      }
+
+      .project-info h3 {
+        font-size: 19px;
+        line-height: 1.4;
+        margin-bottom: 12px;
+      }
+
+      .project-info p {
+        color: #eee5f5;
+        font-size: 13px;
+        line-height: 1.8;
+        margin-bottom: 18px;
+      }
+
+      .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 20px;
+      }
+
+      .tech-tags span {
+        font-size: 10px;
+        padding: 7px 10px;
+        border: 1px solid rgba(229, 164, 255, 0.4);
+        border-radius: 20px;
+        background: rgba(35, 15, 50, 0.25);
+        color: #f6dcff;
+      }
+
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+      }
+
+      .project-links a {
+        text-decoration: none;
+        color: white;
+        font-size: 12px;
+        padding: 10px 13px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 25px;
+        transition: 0.3s;
+      }
+
+      .project-links a.primary {
+        background: linear-gradient(110deg, #9147ed, #e34fae);
+        border-color: transparent;
+      }
+
+      .project-links a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 17px rgba(206, 91, 255, 0.4);
+      }
+
+      /* FOOTER */
+      .closing {
+        text-align: center;
+        padding: 35px 15px;
+        margin-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .closing h2 {
+        font-size: clamp(25px, 4vw, 36px);
+        margin-bottom: 15px;
+      }
+
+      .closing h2 span {
+        color: #e9a3ff;
+      }
+
+      .closing p {
+        color: #eee5f5;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px 0 5px;
+        color: #e0d4ea;
+        font-size: 12px;
+      }
+
+      /* TABLETS */
+      @media (max-width: 1000px) {
+        .projects-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .page-content {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+      }
+
+      /* PHONES */
+      @media (max-width: 650px) {
+        .navbar {
+          justify-content: center;
+          margin-bottom: 40px;
+        }
+
+        .nav-links {
+          justify-content: center;
+          gap: 8px;
+        }
+
+        .nav-links a {
+          padding: 9px 12px;
+          font-size: 11px;
+        }
+
+        .hero {
+          margin-top: 25px;
+        }
+
+        .hero h1 {
+          letter-spacing: -1px;
+        }
+
+        .hero p {
+          font-size: 14px;
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .project-preview {
+          height: 200px;
+        }
+
+        .filters {
+          gap: 8px;
+        }
+
+        .filter-btn {
+          padding: 10px 14px;
+          font-size: 11px;
+        }
+
+        .category-section {
+          margin-bottom: 55px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      .project-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        border-radius: 12px;
+        margin-bottom: 18px;
+        border: 1px solid rgba(225, 170, 255, 0.25);
+        transition: transform 0.4s ease;
+      }
+
+      .project-card {
+        overflow: hidden;
+      }
+
+      .project-card:hover .project-image {
+        transform: scale(1.03);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- BACKGROUND VIDEO -->
+    <div class="smoke-background" aria-hidden="true">
+      <video autoplay muted loop playsinline>
+        <source src="assets/smoke.mp4" type="video/mp4" />
+      </video>
+      <div class="smoke-overlay"></div>
+    </div>
+
+    <div class="page-content">
+      <!-- NAVIGATION -->
+      <nav class="navigation">
+        <a href="index.html">HOME</a>
+        <a href="about me.html">ABOUT</a>
+        <a href="my work.html" class="active">WORK</a>
+        <a href="interests.html">INTERESTS</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+
+      <!-- INTRO -->
+      <header class="hero">
+        <div class="eyebrow">MY CREATIVE SPACE</div>
+
+        <h1>My Work<span>.</span></h1>
+
+        <p>
+          Welcome to my collection of projects and achievements. Each project
+          represents an idea, a challenge, and another step in my journey as a
+          developer.
+        </p>
+      </header>
+
+      <!-- FILTER BUTTONS -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Work</button>
+
+        <button class="filter-btn" data-filter="group">Group Projects</button>
+
+        <button class="filter-btn" data-filter="personal">
+          Personal Projects
+        </button>
+
+        <button class="filter-btn" data-filter="certificate">
+          Certificates
+        </button>
+      </div>
+
+      <!-- GROUP PROJECTS: 3 -->
+      <section
+        class="category-section"
+        id="group-projects"
+        data-section="group"
+      >
+        <div class="category-heading">
+          <h2>Group <span>Projects</span></h2>
+          <span class="category-count">03 projects</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card" data-category="group">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line"></div>
+                <div class="preview-line short"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">✦</span>
+            </div>
+
+            <div class="project-card">
+              <img
+                src="images/group-project-1.jpg"
+                alt="Screenshot of Group Project 1"
+                class="project-image"
+              />
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Group Project 01</div>
+              <h3>ModernTech HR System</h3>
+              <p>
+                A human resources system for managing employee information and
+                supporting HR processes such as attendance, leave, payroll, and
+                performance.
+              </p>
+              <div class="tech-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Node.js</span>
+                <span>MySQL</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="https://hendrickscial-commits.github.io/modern-tech/Github "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="https://github.com/hendrickscial-commits/modern-tech.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="group">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line short"></div>
+                <div class="preview-line"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">◇</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Group Project 02</div>
+              <h3>StockWell</h3>
+              <p>
+                A wholesale shopping platform concept designed to help stokvel
+                groups compare supplier prices and organise collective grocery
+                purchases.
+              </p>
+              <div class="tech-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Node.js</span>
+                <span>MySQL</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="https://stockwell-hl1e.onrender.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="https://github.com/butshatengwa951-cmd/Module_3_e-commerce_project.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="group">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line"></div>
+                <div class="preview-line short"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">✧</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Group Project 03</div>
+              <h3>ModernTech HR System Backend</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>Node.js</span>
+                <span>Express.js</span>
+                <span>MySQL</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="live link: https://hendrickscial-commits.github.io/modern_tech_back/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="frontend link: https://github.com/hendrickscial-commits/modern-tech.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PERSONAL PROJECTS: 4 -->
+      <section
+        class="category-section"
+        id="personal-projects"
+        data-section="personal"
+      >
+        <div class="category-heading">
+          <h2>Personal <span>Projects</span></h2>
+          <span class="category-count">04 projects</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card" data-category="personal">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line"></div>
+                <div class="preview-line short"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">⌘</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Personal Project 01</div>
+              <h3>My Portfolio</h3>
+              <p>
+                My personal website introduces who I am, highlights my skills,
+                and showcases my work through a creative and responsive design.
+              </p>
+              <div class="tech-tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_PORTFOLIO_LIVE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="YOUR_PORTFOLIO_GITHUB_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="personal">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line short"></div>
+                <div class="preview-line"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">⌂</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Personal Project 02</div>
+              <h3>Yanka's Living</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>Vue.js</span>
+                <span>JavaScript</span>
+                <span>CSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_PROPERTY_LIVE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="YOUR_PROPERTY_GITHUB_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="personal">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line"></div>
+                <div class="preview-line short"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">✳</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Personal Project 03</div>
+              <h3>Yanka's Gallery</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Html</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_PROJECT_LIVE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="YOUR_PROJECT_GITHUB_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="personal">
+            <div class="project-preview">
+              <div class="preview-window">
+                <div class="preview-dots">
+                  <span></span><span></span><span></span>
+                </div>
+                <div class="preview-line short"></div>
+                <div class="preview-line"></div>
+                <div class="preview-boxes">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+              <span class="preview-symbol">✺</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Personal Project 04</div>
+              <h3>Bootstrap-Store-TechTide</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>Html</span>
+                <span>CSS</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_PROJECT_LIVE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live Project ↗
+                </a>
+                <a
+                  href="YOUR_PROJECT_GITHUB_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CERTIFICATES: 3 -->
+      <section
+        class="category-section"
+        id="certificates"
+        data-section="certificate"
+      >
+        <div class="category-heading">
+          <h2>My <span>Certificates</span></h2>
+          <span class="category-count">03 certificates</span>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card" data-category="certificate">
+            <div class="project-preview certificate-preview">
+              <div class="certificate-paper">
+                <div class="star">✦</div>
+                <p>CERTIFICATE</p>
+                <div class="cert-line"></div>
+                <div class="cert-line"></div>
+                <div class="cert-line" style="width: 40%"></div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Certificate 01</div>
+              <h3>Cisco Data Analytics</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>Achievement</span>
+                <span>Learning</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_CERTIFICATE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Certificate ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="certificate">
+            <div class="project-preview certificate-preview">
+              <div class="certificate-paper">
+                <div class="star">✦</div>
+                <p>CERTIFICATE</p>
+                <div class="cert-line"></div>
+                <div class="cert-line"></div>
+                <div class="cert-line" style="width: 40%"></div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Certificate 02</div>
+              <h3>Cisco Cybersecurity</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>Development</span>
+                <span>Growth</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_CERTIFICATE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Certificate ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="certificate">
+            <div class="project-preview certificate-preview">
+              <div class="certificate-paper">
+                <div class="star">✦</div>
+                <p>CERTIFICATE</p>
+                <div class="cert-line"></div>
+                <div class="cert-line"></div>
+                <div class="cert-line" style="width: 40%"></div>
+              </div>
+            </div>
+
+            <div class="project-info">
+              <div class="project-type">Certificate 03</div>
+              <h3>YouthCode Project</h3>
+              <p>.</p>
+              <div class="tech-tags">
+                <span>Achievement</span>
+                <span>Learning</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="primary"
+                  href="YOUR_CERTIFICATE_LINK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Certificate ↗
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CLOSING -->
+      <section class="closing">
+        <h2>My journey is <span>still unfolding.</span></h2>
+        <p>
+          Every project teaches me something new. Every challenge brings me
+          closer to the developer I want to be.
+        </p>
+      </section>
+
+      <footer>· Designed with creativity and code.</footer>
+    </div>
+
+    <!-- CATEGORY FILTERING -->
+    <script>
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const projectCards = document.querySelectorAll(".project-card");
+      const categorySections = document.querySelectorAll(".category-section");
+
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const selectedFilter = button.dataset.filter;
+
+          filterButtons.forEach(function (item) {
+            item.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+          projectCards.forEach(function (card) {
+            const cardCategory = card.dataset.category;
+
+            if (selectedFilter === "all" || selectedFilter === cardCategory) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+
+          categorySections.forEach(function (section) {
+            if (
+              selectedFilter === "all" ||
+              section.dataset.section === selectedFilter
+            ) {
+              section.style.display = "block";
+            } else {
+              section.style.display = "none";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
