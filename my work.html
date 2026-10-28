@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Work | Kanya</title>
 
+    <link rel="stylesheet" href="style.css" />
+
     <style>
       * {
         margin: 0;
@@ -18,36 +20,10 @@
 
       body {
         font-family: Arial, Helvetica, sans-serif;
-        background: #100b19;
+        background: #0b1220;
         color: white;
         min-height: 100vh;
         overflow-x: hidden;
-      }
-
-      /* SMOKE BACKGROUND */
-      .smoke-background {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        overflow: hidden;
-        pointer-events: none;
-        background: #100b19;
-      }
-
-      .smoke-background video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 1;
-      }
-
-      .smoke-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(10, 5, 20, 0.15);
-        z-index: 1;
       }
 
       /* KEEP THE PAGE ABOVE THE VIDEO */
@@ -97,10 +73,6 @@
       .navigation a:nth-child(4) {
         animation-delay: 0.55s;
       }
-      .navigation a:nth-child(5) {
-        animation-delay: 0.7s;
-      }
-
       .navigation a:hover,
       .navigation a.active {
         color: #f3c0ff;
@@ -291,6 +263,37 @@
           rgba(12, 7, 25, 0.18);
       }
 
+      .project-preview > * {
+        display: none;
+      }
+
+      .project-preview::after {
+        content: "Add project screenshot here";
+        position: relative;
+        z-index: 1;
+        padding: 12px 18px;
+        border: 1px dashed rgba(236, 166, 255, 0.75);
+        border-radius: 10px;
+        color: #f0d7ff;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        text-align: center;
+        background: rgba(15, 8, 28, 0.55);
+      }
+
+      .project-preview:has(> img)::after {
+        display: none;
+      }
+
+      .project-preview > img {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
       .preview-window {
         width: 78%;
         height: 120px;
@@ -301,10 +304,6 @@
         box-shadow: 0 0 30px rgba(213, 90, 255, 0.22);
         transform: rotate(-3deg);
         transition: 0.4s;
-      }
-
-      .project-card:hover .preview-window {
-        transform: rotate(0) scale(1.04);
       }
 
       .preview-dots {
@@ -358,9 +357,19 @@
 
       /* CERTIFICATE PREVIEW */
       .certificate-preview {
+        height: auto;
+        aspect-ratio: 1500 / 1017;
         background:
           radial-gradient(circle, rgba(227, 153, 255, 0.27), transparent 60%),
           rgba(12, 7, 25, 0.2);
+      }
+
+      .certificate-preview::after {
+        content: "Add certificate image here";
+      }
+
+      .certificate-preview > .certificate-image {
+        object-fit: cover;
       }
 
       .certificate-paper {
@@ -374,10 +383,6 @@
         background: rgba(30, 15, 45, 0.35);
         transform: rotate(-3deg);
         transition: 0.4s;
-      }
-
-      .project-card:hover .certificate-paper {
-        transform: rotate(0) scale(1.04);
       }
 
       .certificate-paper .star {
@@ -590,13 +595,7 @@
   </head>
 
   <body>
-    <!-- BACKGROUND VIDEO -->
-    <div class="smoke-background" aria-hidden="true">
-      <video autoplay muted loop playsinline>
-        <source src="assets/smoke.mp4" type="video/mp4" />
-      </video>
-      <div class="smoke-overlay"></div>
-    </div>
+    <div class="portfolio-background" aria-hidden="true"></div>
 
     <div class="page-content">
       <!-- NAVIGATION -->
@@ -604,15 +603,12 @@
         <a href="index.html">HOME</a>
         <a href="about me.html">ABOUT</a>
         <a href="my work.html" class="active">WORK</a>
-        <a href="interests.html">INTERESTS</a>
-        <a href="contact.html">CONTACT</a>
+        <a href="reflection.html">REFLECTION</a>
       </nav>
 
       <!-- INTRO -->
       <header class="hero">
         <div class="eyebrow">MY CREATIVE SPACE</div>
-
-        <h1>My Work<span>.</span></h1>
 
         <p>
           Welcome to my collection of projects and achievements. Each project
@@ -651,6 +647,12 @@
         <div class="projects-grid">
           <article class="project-card" data-category="group">
             <div class="project-preview">
+              <img
+                src="assets/moderntech_preview.png"
+                alt="ModernTech HR management dashboard preview"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="preview-window">
                 <div class="preview-dots">
                   <span></span><span></span><span></span>
@@ -662,14 +664,6 @@
                 </div>
               </div>
               <span class="preview-symbol">✦</span>
-            </div>
-
-            <div class="project-card">
-              <img
-                src="images/group-project-1.jpg"
-                alt="Screenshot of Group Project 1"
-                class="project-image"
-              />
             </div>
 
             <div class="project-info">
@@ -690,14 +684,14 @@
               <div class="project-links">
                 <a
                   class="primary"
-                  href="https://hendrickscial-commits.github.io/modern-tech/Github "
+                  href="https://lnkd.in/dYrK4f-7"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Project ↗
                 </a>
                 <a
-                  href="https://github.com/hendrickscial-commits/modern-tech.git"
+                  href="https://lnkd.in/dYgJiebr"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -709,6 +703,12 @@
 
           <article class="project-card" data-category="group">
             <div class="project-preview">
+              <img
+                src="assets/stockwell_preview.png"
+                alt="StockWell group shopping platform preview"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="preview-window">
                 <div class="preview-dots">
                   <span></span><span></span><span></span>
@@ -740,14 +740,14 @@
               <div class="project-links">
                 <a
                   class="primary"
-                  href="https://stockwell-hl1e.onrender.com/"
+                  href="https://lnkd.in/ddBnMDBh"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Project ↗
                 </a>
                 <a
-                  href="https://github.com/butshatengwa951-cmd/Module_3_e-commerce_project.git"
+                  href="https://lnkd.in/dEbEFpwj"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -759,6 +759,12 @@
 
           <article class="project-card" data-category="group">
             <div class="project-preview">
+              <img
+                src="assets/moderntech_preview.png"
+                alt="ModernTech HR management dashboard preview"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="preview-window">
                 <div class="preview-dots">
                   <span></span><span></span><span></span>
@@ -775,7 +781,10 @@
             <div class="project-info">
               <div class="project-type">Group Project 03</div>
               <h3>ModernTech HR System Backend</h3>
-              <p>.</p>
+              <p>
+                A Node.js and Express backend for the ModernTech HR system,
+                using MySQL for data storage.
+              </p>
               <div class="tech-tags">
                 <span>Node.js</span>
                 <span>Express.js</span>
@@ -784,14 +793,14 @@
               <div class="project-links">
                 <a
                   class="primary"
-                  href="live link: https://hendrickscial-commits.github.io/modern_tech_back/"
+                  href="https://hendrickscial-commits.github.io/modern_tech_back/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Project ↗
                 </a>
                 <a
-                  href="frontend link: https://github.com/hendrickscial-commits/modern-tech.git"
+                  href="https://github.com/hendrickscial-commits/modern-tech.git"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -803,7 +812,7 @@
         </div>
       </section>
 
-      <!-- PERSONAL PROJECTS: 4 -->
+      <!-- PERSONAL PROJECTS: 1 -->
       <section
         class="category-section"
         id="personal-projects"
@@ -811,13 +820,19 @@
       >
         <div class="category-heading">
           <h2>Personal <span>Projects</span></h2>
-          <span class="category-count">04 projects</span>
+          <span class="category-count">01 project</span>
           <div class="section-line"></div>
         </div>
 
         <div class="projects-grid">
           <article class="project-card" data-category="personal">
             <div class="project-preview">
+              <img
+                src="assets/portfolio_preview.png"
+                alt="Screenshot of Kanya's portfolio website"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="preview-window">
                 <div class="preview-dots">
                   <span></span><span></span><span></span>
@@ -846,14 +861,14 @@
               <div class="project-links">
                 <a
                   class="primary"
-                  href="YOUR_PORTFOLIO_LIVE_LINK"
+                  href="https://lnkd.in/gmz6ZYby"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Live Project ↗
                 </a>
                 <a
-                  href="YOUR_PORTFOLIO_GITHUB_LINK"
+                  href="https://lnkd.in/gpbyU7xw"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -863,136 +878,6 @@
             </div>
           </article>
 
-          <article class="project-card" data-category="personal">
-            <div class="project-preview">
-              <div class="preview-window">
-                <div class="preview-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="preview-line short"></div>
-                <div class="preview-line"></div>
-                <div class="preview-boxes">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <span class="preview-symbol">⌂</span>
-            </div>
-
-            <div class="project-info">
-              <div class="project-type">Personal Project 02</div>
-              <h3>Yanka's Living</h3>
-              <p>.</p>
-              <div class="tech-tags">
-                <span>Vue.js</span>
-                <span>JavaScript</span>
-                <span>CSS</span>
-              </div>
-              <div class="project-links">
-                <a
-                  class="primary"
-                  href="YOUR_PROPERTY_LIVE_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live Project ↗
-                </a>
-                <a
-                  href="YOUR_PROPERTY_GITHUB_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub ↗
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="personal">
-            <div class="project-preview">
-              <div class="preview-window">
-                <div class="preview-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="preview-line"></div>
-                <div class="preview-line short"></div>
-                <div class="preview-boxes">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <span class="preview-symbol">✳</span>
-            </div>
-
-            <div class="project-info">
-              <div class="project-type">Personal Project 03</div>
-              <h3>Yanka's Gallery</h3>
-              <p>.</p>
-              <div class="tech-tags">
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Html</span>
-              </div>
-              <div class="project-links">
-                <a
-                  class="primary"
-                  href="YOUR_PROJECT_LIVE_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live Project ↗
-                </a>
-                <a
-                  href="YOUR_PROJECT_GITHUB_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub ↗
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="project-card" data-category="personal">
-            <div class="project-preview">
-              <div class="preview-window">
-                <div class="preview-dots">
-                  <span></span><span></span><span></span>
-                </div>
-                <div class="preview-line short"></div>
-                <div class="preview-line"></div>
-                <div class="preview-boxes">
-                  <span></span><span></span><span></span>
-                </div>
-              </div>
-              <span class="preview-symbol">✺</span>
-            </div>
-
-            <div class="project-info">
-              <div class="project-type">Personal Project 04</div>
-              <h3>Bootstrap-Store-TechTide</h3>
-              <p>.</p>
-              <div class="tech-tags">
-                <span>Html</span>
-                <span>CSS</span>
-              </div>
-              <div class="project-links">
-                <a
-                  class="primary"
-                  href="YOUR_PROJECT_LIVE_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Live Project ↗
-                </a>
-                <a
-                  href="YOUR_PROJECT_GITHUB_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  GitHub ↗
-                </a>
-              </div>
-            </div>
-          </article>
         </div>
       </section>
 
@@ -1022,50 +907,44 @@
 
             <div class="project-info">
               <div class="project-type">Certificate 01</div>
-              <h3>Cisco Data Analytics</h3>
-              <p>.</p>
+              <h3>YouthCode Project</h3>
+              <p>
+                Certificate image and verification details will be added here.
+              </p>
               <div class="tech-tags">
                 <span>Achievement</span>
                 <span>Learning</span>
-              </div>
-              <div class="project-links">
-                <a
-                  class="primary"
-                  href="YOUR_CERTIFICATE_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Certificate ↗
-                </a>
               </div>
             </div>
           </article>
 
           <article class="project-card" data-category="certificate">
             <div class="project-preview certificate-preview">
-              <div class="certificate-paper">
-                <div class="star">✦</div>
-                <p>CERTIFICATE</p>
-                <div class="cert-line"></div>
-                <div class="cert-line"></div>
-                <div class="cert-line" style="width: 40%"></div>
-              </div>
+              <img
+                class="certificate-image"
+                src="assets/data-science-certificate-preview.png"
+                alt="Introduction to Data Science certificate awarded to Kanya Masinda by Cisco Networking Academy"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div class="project-info">
               <div class="project-type">Certificate 02</div>
-              <h3>Cisco Cybersecurity</h3>
-              <p>.</p>
+              <h3>Introduction to Data Science</h3>
+              <p>
+                Completed foundational study of data science, exploring how
+                data is prepared, analyzed, and used to uncover meaningful
+                insights.
+              </p>
               <div class="tech-tags">
-                <span>Development</span>
-                <span>Growth</span>
+                <span>Data Science</span>
+                <span>Certificate</span>
               </div>
               <div class="project-links">
                 <a
                   class="primary"
-                  href="YOUR_CERTIFICATE_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="assets/introduction-to-data-science-certificate.pdf"
                 >
                   View Certificate ↗
                 </a>
@@ -1075,29 +954,31 @@
 
           <article class="project-card" data-category="certificate">
             <div class="project-preview certificate-preview">
-              <div class="certificate-paper">
-                <div class="star">✦</div>
-                <p>CERTIFICATE</p>
-                <div class="cert-line"></div>
-                <div class="cert-line"></div>
-                <div class="cert-line" style="width: 40%"></div>
-              </div>
+              <img
+                class="certificate-image"
+                src="assets/cybersecurity-certificate-preview.png"
+                alt="Introduction to Cybersecurity certificate awarded to Kanya Masinda"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div class="project-info">
               <div class="project-type">Certificate 03</div>
-              <h3>YouthCode Project</h3>
-              <p>.</p>
+              <h3>Introduction to Cybersecurity</h3>
+              <p>
+                Completed foundational cybersecurity learning, building
+                awareness of common digital threats, safe online practices,
+                and core security principles.
+              </p>
               <div class="tech-tags">
-                <span>Achievement</span>
-                <span>Learning</span>
+                <span>Cybersecurity</span>
+                <span>Certificate</span>
               </div>
               <div class="project-links">
                 <a
                   class="primary"
-                  href="YOUR_CERTIFICATE_LINK"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="assets/introduction-to-cybersecurity-certificate.pdf"
                 >
                   View Certificate ↗
                 </a>

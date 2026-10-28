@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reflection | Kanya Masinda</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: #0b1220;
+        color: white;
+        font-family: Arial, sans-serif;
+      }
+
+      .page-content {
+        position: relative;
+        z-index: 1;
+        width: min(100% - 32px, 1050px);
+        min-height: 100vh;
+        margin: 0 auto;
+        padding: 25px 0 60px;
+      }
+
+      .navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin: 10px auto 65px;
+      }
+
+      .navigation a {
+        padding: 13px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+        background: rgba(20, 14, 35, 0.45);
+        color: white;
+        font-size: 11px;
+        letter-spacing: 1px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .navigation a:hover,
+      .navigation a.active {
+        border-color: #e69aff;
+        background: rgba(155, 68, 210, 0.25);
+        color: #f3c0ff;
+        box-shadow: 0 0 18px rgba(207, 102, 255, 0.4);
+      }
+
+      .hero {
+        max-width: 760px;
+        margin: 0 auto 42px;
+        text-align: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 9px 18px;
+        border: 1px solid rgba(236, 166, 255, 0.6);
+        border-radius: 30px;
+        background: rgba(20, 10, 35, 0.3);
+        color: #f0b7ff;
+        font-size: 11px;
+        letter-spacing: 3px;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        font-size: clamp(40px, 7vw, 72px);
+        letter-spacing: -2px;
+      }
+
+      h1 span,
+      .reflection-card h2 {
+        background: linear-gradient(90deg, #d9a4ff, #ff78ca, #a9c3ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .hero p,
+      .reflection-card p {
+        color: #eee5f5;
+        font-size: 15px;
+        line-height: 1.9;
+      }
+
+      .reflection-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .reflection-card {
+        padding: 26px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 18px;
+        background: rgba(15, 8, 28, 0.55);
+        backdrop-filter: blur(8px);
+      }
+
+      .reflection-card.overall {
+        grid-column: 1 / -1;
+      }
+
+      .project-role {
+        margin: -4px 0 14px;
+        color: #d3b8f3;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        line-height: 1.7;
+        text-transform: uppercase;
+      }
+
+      .reflection-card h2 {
+        margin-bottom: 12px;
+        font-size: 22px;
+      }
+
+      .reflection-card p + p {
+        margin-top: 12px;
+      }
+
+      .reflection-card ul {
+        display: grid;
+        gap: 8px;
+        margin: 0 0 16px 20px;
+        color: #eee5f5;
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .reflection-card li::marker {
+        color: #d9a4ff;
+      }
+
+      footer {
+        margin-top: 45px;
+        color: #c9b5ed;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      @media (max-width: 650px) {
+        .navigation {
+          margin-bottom: 45px;
+        }
+
+        .reflection-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .reflection-card.overall {
+          grid-column: auto;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="portfolio-background" aria-hidden="true"></div>
+
+    <main class="page-content">
+      <nav class="navigation" aria-label="Portfolio navigation">
+        <a href="index.html">HOME</a>
+        <a href="about me.html">ABOUT</a>
+        <a href="my work.html">WORK</a>
+        <a href="reflection.html" class="active" aria-current="page">
+          REFLECTION
+        </a>
+      </nav>
+
+      <header class="hero">
+        <p class="eyebrow">LEARNING THROUGH PRACTICE</p>
+        <h1>My <span>Reflection.</span></h1>
+        <p>
+          Looking back at the projects I have built, I can see how each one
+          strengthened my skills, challenged me to solve problems, and helped
+          me grow as a developer.
+        </p>
+      </header>
+
+      <section class="reflection-grid" aria-label="My learning reflections">
+        <article class="reflection-card">
+          <h2>ModernTech Solutions</h2>
+          <p class="project-role">Frontend · Employee Data Management and Login</p>
+          <p>
+            ModernTech was one of my first team website projects: an HR system
+            designed to help a company manage employee information and related
+            processes. My assigned role focused on employee data management
+            and login.
+          </p>
+          <p>I worked on the frontend pages and features for:</p>
+          <ul>
+            <li>A login interface for users to access the system.</li>
+            <li>
+              An employee data page for displaying records and supporting
+              employee management.
+            </li>
+            <li>
+              Navigation and interface details to help users move through the
+              system.
+            </li>
+          </ul>
+          <p>
+            I used HTML, CSS, JavaScript, and Bootstrap. One challenge was
+            making the employee features work while keeping the pages
+            consistent. Testing the functionality, checking my code, and
+            coordinating with teammates helped me bring the different sections
+            together. This project strengthened my frontend skills and showed
+            me how each page contributes to a complete application.
+          </p>
+        </article>
+
+        <article class="reflection-card">
+          <h2>ModernTech Solutions</h2>
+          <p class="project-role">Backend · Employee Data Management and Login</p>
+          <p>
+            In the backend phase, I continued working on employee data
+            management and login, learning how the application could process
+            requests, manage information, and communicate with a database.
+          </p>
+          <ul>
+            <li>Explored login requests and user authentication.</li>
+            <li>
+              Learned how API routes, controllers, and models organise
+              application logic and employee data operations.
+            </li>
+            <li>
+              Worked with MySQL and used Thunder Client to test API endpoints.
+            </li>
+          </ul>
+          <p>
+            I used Node.js and Express and learned about API requests and
+            middleware. When a request failed, I had to work out whether the
+            issue was in a route, controller, database query, or request. I
+            made progress by breaking the problem into smaller steps, reading
+            error messages, and testing endpoints individually. This helped me
+            understand how the backend components connect to the frontend.
+          </p>
+        </article>
+
+        <article class="reflection-card">
+          <h2>StockWell</h2>
+          <p class="project-role">
+            E-commerce · Frontend, backend, and database development
+          </p>
+          <p>
+            StockWell was designed to help stokvels shop more conveniently by
+            comparing supplier prices and organising bulk purchases. I
+            contributed to both frontend and backend development, as well as
+            database creation.
+          </p>
+          <p>I worked on:</p>
+          <ul>
+            <li>
+              The home page, making the landing experience welcoming and
+              visually engaging.
+            </li>
+            <li>
+              The product catalogue, displaying product images and supplier
+              price comparisons.
+            </li>
+            <li>
+              The admin and member dashboards, contributing to their frontend
+              and backend functionality.
+            </li>
+            <li>
+              Database tables and relationships for users, products,
+              suppliers, stokvels, and stokvel members.
+            </li>
+          </ul>
+          <p>
+            One challenge was finding suitable product images and displaying
+            them clearly in the catalogue. I also worked to make the home page
+            more appealing. I addressed these issues by correcting image paths
+            and display styles, improving the layout, and refining the design
+            to make the platform easier to navigate.
+          </p>
+          <p>
+            StockWell strengthened my frontend, backend, and database skills.
+            It showed me how clear product images and an inviting home page
+            can improve an e-commerce experience, and helped me understand
+            how the parts of a full-stack application work together to address
+            a real-world need.
+          </p>
+        </article>
+
+        <article class="reflection-card">
+          <h2>My First Portfolio</h2>
+          <p class="project-role">Personal project · HTML, CSS, and JavaScript</p>
+          <p>
+            My first portfolio gave me space to present my development journey
+            and experiment with a design that felt personal. I explored a dark
+            theme, smoke effects, floating circles, and animated navigation.
+            I worked on the home, About Me, Work, Interests, and Contact pages,
+            along with responsive layouts and navigation between them.
+          </p>
+          <p>
+            Turning visual ideas into a working website was a challenge. I
+            learned to troubleshoot navigation, filenames, CSS, background
+            paths, and GitHub Pages deployment by checking file paths,
+            organising project files, reviewing deployment settings, and
+            testing changes rather than assuming they worked.
+          </p>
+          <p>
+            This portfolio has continued to evolve. The experience taught me
+            that a site should not only look attractive; it also needs to be
+            organised, functional, accessible, and tested after deployment.
+          </p>
+        </article>
+
+        <article class="reflection-card overall">
+          <h2>What I have learned and where I am going</h2>
+          <p>
+            These projects have taken me from frontend interfaces to backend
+            APIs and databases, through a community-focused e-commerce idea,
+            and into independent portfolio design. Across them, I have learned
+            the value of teamwork, planning, communication, patience, and
+            continuous learning.
+          </p>
+          <p>
+            When something goes wrong, I am learning to break the problem into
+            smaller steps, inspect the code and errors, test possible
+            solutions, and learn from the result. I am proud of the progress I
+            have made, while recognising that there is still more to learn.
+            Going forward, I want to build confidence coding independently,
+            strengthen my frontend and backend skills, and keep creating
+            projects that show what I can do.
+          </p>
+        </article>
+      </section>
+
+      <footer>ALWAYS LEARNING · ALWAYS BUILDING</footer>
+    </main>
+  </body>
+</html>

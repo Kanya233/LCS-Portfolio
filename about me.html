@@ -6,6 +6,8 @@
 
     <title>About Me | My Portfolio</title>
 
+    <link rel="stylesheet" href="style.css" />
+
     <style>
       /* RESET */
       * {
@@ -22,34 +24,8 @@
         min-height: 100vh;
         font-family: Arial, sans-serif;
         color: white;
-        background: #100e18;
+        background: #0b1220;
         overflow-x: hidden;
-      }
-
-      /* SMOKE VIDEO BACKGROUND */
-      .smoke-background {
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        overflow: hidden;
-        pointer-events: none;
-        background: #100e18;
-      }
-
-      .smoke-background video {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 1;
-      }
-
-      .smoke-overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        background: rgba(10, 7, 20, 0.3);
       }
 
       /* ALL CONTENT SITS ABOVE THE VIDEO */
@@ -99,10 +75,6 @@
       .navigation a:nth-child(4) {
         animation-delay: 0.55s;
       }
-      .navigation a:nth-child(5) {
-        animation-delay: 0.7s;
-      }
-
       .navigation a:hover,
       .navigation a.active {
         color: #f3c0ff;
@@ -415,13 +387,7 @@
   </head>
 
   <body>
-    <!-- SMOKE VIDEO: KEEP THIS AT THE TOP OF BODY -->
-    <div class="smoke-background" aria-hidden="true">
-      <video autoplay muted loop playsinline>
-        <source src="assets/smoke.mp4" type="video/mp4" />
-      </video>
-      <div class="smoke-overlay"></div>
-    </div>
+    <div class="portfolio-background" aria-hidden="true"></div>
 
     <main class="page-content">
       <!-- NAVIGATION -->
@@ -429,8 +395,7 @@
         <a href="index.html">HOME</a>
         <a href="about me.html" class="active">ABOUT</a>
         <a href="my work.html">WORK</a>
-        <a href="interests.html">INTERESTS</a>
-        <a href="contact.html">CONTACT</a>
+        <a href="reflection.html">REFLECTION</a>
       </nav>
 
       <!-- ABOUT MYSELF -->
@@ -572,27 +537,41 @@
             <div class="skill-icon">&lt;/&gt;</div>
             <h3>HTML5</h3>
             <p>Building the structure of websites using HTML.</p>
-            <span class="skill-level">Learning & practising</span>
+            <span class="skill-level">Confident but still learning</span>
           </div>
 
           <div class="glass-card skill-card">
             <div class="skill-icon">✧</div>
             <h3>CSS3</h3>
             <p>Creating layouts, visual designs, and animations.</p>
-            <span class="skill-level">Learning & practising</span>
+            <span class="skill-level">Confident but still learning</span>
           </div>
 
           <div class="glass-card skill-card">
             <div class="skill-icon">{ }</div>
             <h3>JavaScript</h3>
             <p>Adding interactive features and functionality.</p>
-            <span class="skill-level">Learning & practising</span>
+            <span class="skill-level">Confident but still learning</span>
           </div>
 
           <div class="glass-card skill-card">
             <div class="skill-icon">▤</div>
             <h3>SQL & MySQL</h3>
             <p>Creating databases and working with data.</p>
+            <span class="skill-level">Confident but still learning</span>
+          </div>
+
+          <div class="glass-card skill-card">
+            <div class="skill-icon">⌘</div>
+            <h3>Node.js</h3>
+            <p>Building server-side applications with JavaScript.</p>
+            <span class="skill-level">Learning & practising</span>
+          </div>
+
+          <div class="glass-card skill-card">
+            <div class="skill-icon">⇄</div>
+            <h3>Express.js</h3>
+            <p>Creating web servers and APIs with Node.js.</p>
             <span class="skill-level">Learning & practising</span>
           </div>
 
