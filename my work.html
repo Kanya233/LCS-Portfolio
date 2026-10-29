@@ -6,13 +6,6 @@
     <title>My Work | Kanya</title>
 
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap"
-      rel="stylesheet"
-    />
-
     <style>
       * {
         margin: 0;
@@ -134,8 +127,6 @@
         font-size: 15px;
         line-height: 1.9;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
-        font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
-        font-weight: 300;
       }
 
       @keyframes fadeUp {
@@ -289,7 +280,7 @@
         background: rgba(15, 8, 28, 0.55);
       }
 
-      .project-preview:has(> img)::after {
+      .project-preview:has(> img, > .certificate-preview-label)::after {
         display: none;
       }
 
@@ -372,45 +363,6 @@
           rgba(12, 7, 25, 0.2);
       }
 
-      .certificate-preview::after {
-        content: "Add certificate image here";
-      }
-
-      .certificate-preview > .certificate-image {
-        object-fit: cover;
-      }
-
-      .certificate-paper {
-        width: 150px;
-        height: 120px;
-        padding: 14px;
-        text-align: center;
-        border: 2px solid #e2aaff;
-        outline: 1px solid rgba(255, 255, 255, 0.4);
-        outline-offset: -7px;
-        background: rgba(30, 15, 45, 0.35);
-        transform: rotate(-3deg);
-        transition: 0.4s;
-      }
-
-      .certificate-paper .star {
-        color: #f4d1ff;
-        font-size: 22px;
-      }
-
-      .certificate-paper p {
-        margin-top: 7px;
-        font-size: 10px;
-        letter-spacing: 2px;
-      }
-
-      .cert-line {
-        width: 65%;
-        height: 3px;
-        margin: 7px auto;
-        background: rgba(255, 255, 255, 0.65);
-      }
-
       /* PROJECT DETAILS */
       .project-info {
         padding: 22px;
@@ -435,8 +387,6 @@
         font-size: 13px;
         line-height: 1.8;
         margin-bottom: 18px;
-        font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
-        font-weight: 300;
       }
 
       .tech-tags {
@@ -502,8 +452,6 @@
         color: #eee5f5;
         font-size: 14px;
         line-height: 1.8;
-        font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
-        font-weight: 300;
       }
 
       footer {
@@ -908,24 +856,30 @@
         <div class="projects-grid">
           <article class="project-card" data-category="certificate">
             <div class="project-preview certificate-preview">
-              <div class="certificate-paper">
-                <div class="star">✦</div>
-                <p>CERTIFICATE</p>
-                <div class="cert-line"></div>
-                <div class="cert-line"></div>
-                <div class="cert-line" style="width: 40%"></div>
-              </div>
+              <img
+                class="certificate-image"
+                src="assets/youthcode-certificate-preview.png"
+                alt="YouthCode Project Certificate of Achievement awarded to Kanya Masinda by Life Choices Academy"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <div class="project-info">
               <div class="project-type">Certificate 01</div>
-              <h3>YouthCode Project</h3>
+              <h3>YouthCode Project Certificate</h3>
               <p>
-                Certificate image and verification details will be added here.
+                Awarded by Life Choices Academy for completing the YouthCode
+                Project.
               </p>
               <div class="tech-tags">
+                <span>YouthCode Project</span>
                 <span>Achievement</span>
-                <span>Learning</span>
+              </div>
+              <div class="project-links">
+                <a class="primary" href="assets/youthcode-certificate.pdf">
+                  View Certificate ↗
+                </a>
               </div>
             </div>
           </article>
